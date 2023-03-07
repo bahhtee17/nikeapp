@@ -1,12 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+
 
 import React from 'react';
-import products from './src/data/products';
+
 import {
   FlatList,
   Image,
@@ -18,6 +13,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import ProductPage from './src/products/ProductPage';
+import ProductDetailPage from './src/screens/ProductDetailPage';
 
 
 
@@ -26,10 +23,8 @@ function App(): JSX.Element {
 
   return (
    <View style={styles.mainContainer}>
-     <FlatList data={products} renderItem={({item}) =>(
-     <View style={styles.productContainer}>
-        <Image style={styles.image} source={{uri: item.image}}/>
-     </View> )} numColumns={2}/>
+     <ProductDetailPage/>
+      <StatusBar />
    </View>
   );
 }
@@ -41,15 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  image:{
-    width: "100%",
-    aspectRatio:1
 
-  },
-  productContainer:{
- width: "50%",
- padding: 1
-  }
 });
 
 export default App;
