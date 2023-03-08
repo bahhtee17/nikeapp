@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 import ProductPage from './src/products/ProductPage';
+import CartPageScreen from './src/screens/CartPageScreen';
 import ProductDetailPage from './src/screens/ProductDetailPage';
 
 
@@ -23,7 +24,7 @@ function App(): JSX.Element {
 
   return (
    <View style={styles.mainContainer}>
-     <ProductDetailPage/>
+     <CartPageScreen/>
       <StatusBar />
    </View>
   );
@@ -33,8 +34,7 @@ const styles = StyleSheet.create({
   mainContainer:{
     width: "100%",
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center"
+
   },
 
 });
