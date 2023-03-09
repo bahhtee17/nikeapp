@@ -33,7 +33,7 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   mainContainer:{
     width: "100%",
-    backgroundColor: "white",
+
 
   },
 
