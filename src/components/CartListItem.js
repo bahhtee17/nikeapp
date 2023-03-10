@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   image:{
     width: "50%",
     aspectRatio: 1,
-    marginVertical: 1
+    marginVertical: 1,
+   padding:40
   },
   contentContainer:{
     padding: 15,
