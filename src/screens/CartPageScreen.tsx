@@ -3,7 +3,10 @@ import React from 'react';
 import cart from '../data/cart';
 import CartListItem from '../components/CartListItem';
 
+import { useSelector } from 'react-redux';
+
 const CartPageScreen = () => {
+
 const ShoppingCartFooter = () => (
   <View style={styles.footerContainer}>
     <View style={styles.row}>
@@ -21,7 +24,7 @@ const ShoppingCartFooter = () => (
   </View>
 )
 
-
+   const cart = useSelector(state => state.cart.items)
   return (
     <>
     <FlatList data={cart} renderItem={({item}) =>

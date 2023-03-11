@@ -1,16 +1,20 @@
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import products from '../data/products'
+
 import { useWindowDimensions } from 'react-native'
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+import { cartSlice } from '../store/cartSlice';
+
 
 const ProductDetailPage = () => {
 const product = useSelector(state => state.products.selectedProduct)
+const dispatch = useDispatch();
 const {width} = useWindowDimensions();
 
 const onPressHandler = () => {
-    console.warn("Pressed")
+   dispatch(cartSlice.actions.addCartproduct({product}))
 }
 
   return (
