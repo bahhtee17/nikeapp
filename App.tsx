@@ -21,8 +21,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductPage from './src/screens/ProductMainScreen';
 import ProductDetailPage from './src/screens/ProductDetailPage';
 import CartPageScreen from './src/screens/CartPageScreen';
-
-
+import { Provider } from 'react-redux';
+import { store } from './src/store';
 
 
 function App(): JSX.Element {
@@ -30,6 +30,7 @@ function App(): JSX.Element {
 
 
   return (
+    <Provider store={store}>
     <NavigationContainer>
     <Stack.Navigator >
         <Stack.Screen name='Products' component={ProductPage}
@@ -46,6 +47,7 @@ function App(): JSX.Element {
         <Stack.Screen name="Your Cart" component={CartPageScreen} />
     </Stack.Navigator>
 </NavigationContainer>
+</Provider>
   );
 }
 

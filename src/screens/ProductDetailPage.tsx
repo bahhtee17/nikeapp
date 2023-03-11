@@ -3,8 +3,10 @@ import React from 'react'
 import products from '../data/products'
 import { useWindowDimensions } from 'react-native'
 
+import { useSelector } from 'react-redux';
+
 const ProductDetailPage = () => {
-const product = products[0];
+const product = useSelector(state => state.products.selectedProduct)
 const {width} = useWindowDimensions();
 
 const onPressHandler = () => {
