@@ -1,11 +1,23 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import {PlusCircleIcon} from "react-native-heroicons/outline";
 import {MinusCircleIcon} from "react-native-heroicons/outline"
-
+import {useDispatch} from "react-redux"
+import { cartSlice } from './../store/cartSlice';
 const CartListItem = ({ cartItem }) => {
-  const increaseQuantity = () => {};
+  const dispatch = useDispatch()
+  const increaseQuantity = () => {
+    dispatch(cartSlice.actions.changeQuantity({
+      productId: cartItem.product.id,
+      amount: 1
+    }))
+  };
 
-  const decreaseQuantity = () => {};
+  const decreaseQuantity = () => {
+    dispatch(cartSlice.actions.changeQuantity({
+      productId: cartItem.product.id,
+      amount: -1
+    }))
+  };
 
   return (
 
@@ -18,16 +30,16 @@ const CartListItem = ({ cartItem }) => {
      <Text style={styles.name}>{cartItem.product.name}</Text>
      <Text style={styles.size}>Size {cartItem.size}</Text>
      <View style={styles.footer}>
-      <Pressable>
+      <Pressable onPress={increaseQuantity}>
       <  PlusCircleIcon width={30} height={30} color={"gray"}/>
       </Pressable>
 
           <Text style={styles.quantity}>{cartItem.quantity}</Text>
-          <Pressable>
+          <Pressable onPress={decreaseQuantity}>
             <MinusCircleIcon width={30} height={30} color={"gray"}/>
           </Pressable>
 
-          <Text style={styles.itemTotal}>$320.0</Text>
+          <Text style={styles.itemTotal}>${cartItem.product.price * cartItem.quantity}</Text>
         </View>
     </View>
  </View>

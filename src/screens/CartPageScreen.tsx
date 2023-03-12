@@ -4,25 +4,30 @@ import cart from '../data/cart';
 import CartListItem from '../components/CartListItem';
 
 import { useSelector } from 'react-redux';
+import { selectDeliveryFee, selectSubtotal } from './../store/cartSlice';
 
 const CartPageScreen = () => {
 
-const ShoppingCartFooter = () => (
+const ShoppingCartFooter = () => {
+  const subtotal = useSelector(selectSubtotal)
+  const deliveryFee = useSelector(selectDeliveryFee)
+  return(
   <View style={styles.footerContainer}>
     <View style={styles.row}>
        <Text style={{color: "gray", fontSize: 15}}>Subtotal:</Text>
-       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>$960</Text>
+       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>${subtotal}</Text>
     </View>
     <View style={styles.row}>
        <Text style={{color: "gray", fontSize: 15}}>Delivery:</Text>
-       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>$10</Text>
+       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>${deliveryFee}</Text>
     </View>
     <View style={styles.row}>
        <Text style={{color: "gray", fontSize: 15}}>Total:</Text>
-       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>$970</Text>
+       <Text style={{color: "gray", fontSize: 15, fontWeight: "bold"}}>{subtotal + deliveryFee}</Text>
     </View>
   </View>
-)
+  )
+}
 
    const cart = useSelector(state => state.cart.items)
   return (
